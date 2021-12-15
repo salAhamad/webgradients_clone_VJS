@@ -1,0 +1,233 @@
+*, *::before, *::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+$white: #ffffff;
+$black: #000000;
+$bgBaseColor: #f6f6f6;
+$boxHeight: 420px;
+body {
+    font-family: 'Muli', 'Futura', Helvetica, Arial, sans-serif;
+    font-size: .8125em;
+    line-height: 1em;
+}
+@mixin flexCenter ($jc: center, $ai: center) {
+    display: flex;
+    justify-content: $jc;
+    align-items: $ai;
+}
+
+.container {
+    width: 100%;
+    max-width: 1360px;
+    padding: 0 20px;
+    margin: auto;
+}
+
+header {
+    position: relative;
+    width: 100%;
+    .subHeader {
+        position: relative;
+        width: 100%;
+        padding: 5vh 0;
+        text-align: center;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        font-size: 16px;
+        line-height: 22px;
+
+        .logo {
+            width: 300px;
+            margin-bottom: 1.5rem;
+            svg {width: 100%;}
+        }
+        a {color: black; text-decoration: none;}
+        p:last-child {margin-top: 1rem; text-decoration: underline;}
+    }
+}
+
+main {
+    width: 100%;
+    height: 100%;
+    padding: 8vh 0;
+    background-color: $bgBaseColor;
+    overflow: hidden;
+
+    .row {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 1.5rem;
+    }
+
+    .card__container {
+        position: relative;
+        width: calc((100% - 3rem) / 3);
+        height: clamp($boxHeight / 1.2, 26vw, $boxHeight);
+        background-color: $white;
+        box-shadow: 0 6px 15px rgba(36,37,38, 0.08);
+        border-radius: 16px;
+        // overflow: hidden;
+        transition: box-shadow 0.25s ease, transform 0.25s ease;
+        padding: 2rem;
+        flex-direction: column;
+        cursor: pointer;
+        @include flexCenter(space-between, center);
+        
+        &:hover {box-shadow: 5px 12px 20px rgba(36, 37, 38, 0.15);}
+
+        .__header {
+            position: relative;
+            width: 100%;
+            @include flexCenter(space-between, center);
+            .__downloadButton {
+                width: 21px;
+                height: 21px;
+                border: 1px solid $black;
+                background-image: url(download.svg);
+                background-position: center center;
+                background-repeat: no-repeat;
+                cursor: pointer;
+                border-radius: 20px;
+                transition: all 0.3s ease;
+                &:hover {
+                    transform: scale(1.5);
+                    box-shadow: 0 10px 20px rgba(0,0,0, 0.2);
+                    background-color: $white;
+                    border-color: $white;
+                }
+            }
+        }
+        .__bgColorContainer {
+            position: relative;
+            width: 250px;
+            height: 250px;
+            width: clamp(150px, 15.5vw, $boxHeight / 2 + 40);
+            height: clamp(150px, 15.5vw, $boxHeight / 2 + 40);
+            border-radius: $boxHeight;
+            background-color: #eee;
+            z-index: 0;
+            cursor: zoom-in;
+            @include flexCenter();
+            &.active {
+                z-index: 9999;
+                .checkBox{
+                    border-radius: 0;
+                    z-index: 1;
+                    width: 100vw !important;
+                    height: 100vh !important;
+                    top: 0 !important;
+                    left: 0 !important;
+                    position: fixed !important;
+                }
+            }
+
+        }
+        .__footer {
+            position: relative;
+            width: 100%;
+            @include flexCenter(space-between, center);
+            .__copyButton {
+                border: 0;
+                outline: none;
+                background-color: transparent;
+                cursor: pointer;
+                position: relative;
+                &:after {
+                    content: '';
+                    position: absolute;
+                    bottom: -5px;
+                    right: 0;
+                    width: 0;
+                    height: 1px;
+                    background-color: #333;
+                    transition: all 0.3s ease;
+                }
+                &:hover::after { left: 0; width: 100%; }
+            }
+        }
+
+        .copiedMessageAlert {
+            $circleWidth: 250px;
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            bottom: 0;
+            right: 0;
+            overflow: hidden;
+            border-radius: 16px;
+            pointer-events: none;
+            &:after {
+                content: '';
+                position: absolute;
+                width: $circleWidth;
+                height: $circleWidth;
+                bottom: -$circleWidth / 2;
+                right: -$circleWidth / 2;
+                border-radius: $circleWidth;
+                transform: scale(0);
+                transform-origin: right bottom;
+                background-color: rgba(white, 0.75);
+                transition: transform 0.5s ease-in;
+                z-index: 0;
+            }
+            .gradientsDoneMessage {
+                position: relative;
+                width: 100%;
+                height: 100%;
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+                opacity: 0;
+                visibility: hidden;
+                transition: opacity 1s ease;
+                transition-delay: .85s;
+                z-index: 1;
+                ._emoji {font-size: 40px; line-height: normal; margin-bottom: 1rem;}
+                ._word {font-size: 16px;}
+            }
+            
+        }
+
+        &.coppeid {
+            .copiedMessageAlert {
+                &::after {transform: scale(2.5);}
+                .gradientsDoneMessage {opacity: 1; visibility: visible;}
+            }
+        }
+    }
+    .checkBox {
+        position: fixed;
+        width: 50px;
+        height: 50px;
+        transform-origin: center;
+        transform: scale(0);
+        border-radius: 50vh;
+        transition: all 0.5s ease-in;
+        cursor: pointer;
+        z-index: 99;
+        top: 0;
+        left: 0;
+        &.opened {
+            transition: all 1s ease-in;
+            border-radius: 0;
+            height: 100vh !important;
+            width: 100vw !important;
+            left: 0 !important;
+            top: 0 !important;
+            transform: none !important;
+            cursor: zoom-out;
+        }
+        @keyframes borderRadius {
+            0% {border-radius: 100vh}
+            100% {border-radius: 0;}
+        }
+    }
+}
+
+
+
