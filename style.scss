@@ -8,6 +8,7 @@ $white: #ffffff;
 $black: #000000;
 $bgBaseColor: #f6f6f6;
 $boxHeight: 420px;
+$containerWidth: 100vw - 25vw;
 body {
     font-family: 'Muli', 'Futura', Helvetica, Arial, sans-serif;
     font-size: .8125em;
@@ -21,9 +22,8 @@ body {
 
 .container {
     width: 100%;
-    max-width: 1360px;
-    padding: 0 20px;
-    margin: auto;
+    max-width: $containerWidth;
+    margin: 0 auto;
 }
 
 header {
@@ -60,21 +60,23 @@ main {
     .row {
         display: flex;
         flex-wrap: wrap;
-        gap: 1.5rem;
+        gap: 1.5vw;
     }
 
     .card__container {
         position: relative;
-        width: calc((100% - 3rem) / 3);
-        height: clamp($boxHeight / 1.2, 26vw, $boxHeight);
+        $cardWidth: calc((75vw - 3vw) / 3);
+        width: $cardWidth;
+        height: $cardWidth;
         background-color: $white;
         box-shadow: 0 6px 15px rgba(36,37,38, 0.08);
-        border-radius: 16px;
+        border-radius: 1vw;
         // overflow: hidden;
         transition: box-shadow 0.25s ease, transform 0.25s ease;
-        padding: 2rem;
+        padding: 1.5vw;
         flex-direction: column;
-        cursor: pointer;
+        font-size: clamp(12px, 1.5vw, 16px);
+
         @include flexCenter(space-between, center);
         
         &:hover {box-shadow: 5px 12px 20px rgba(36, 37, 38, 0.15);}
@@ -103,10 +105,9 @@ main {
         }
         .__bgColorContainer {
             position: relative;
-            width: 250px;
-            height: 250px;
-            width: clamp(150px, 15.5vw, $boxHeight / 2 + 40);
-            height: clamp(150px, 15.5vw, $boxHeight / 2 + 40);
+            $bgColorSize: 15vw;
+            width: $bgColorSize;
+            height: $bgColorSize;
             border-radius: $boxHeight;
             background-color: #eee;
             z-index: 0;
@@ -229,5 +230,65 @@ main {
     }
 }
 
+@media (min-width: 1001px) and (max-width: 1399px) {
+    $containerWidth: 100vw - 15vw;
+    .container { max-width: $containerWidth; }
+
+    main .card__container {
+        $cardWidth: calc((85vw - 3vw) / 3);
+        width: $cardWidth;
+        height: $cardWidth;
+        border-radius: 2vw;
+        font-size: clamp(12px, 1.5vw, 14px);
+        
+        .__bgColorContainer {
+            width: $containerWidth - 68vw;
+            height: $containerWidth - 68vw;
+        }
+    }
+
+}
+@media (min-width: 768px) and (max-width: 1000px) {
+    $containerWidth: 100vw - 6vw;
+    .container { max-width: $containerWidth; }
+
+    main {
+        .row {gap: 3vw;}
+        .card__container {
+            $cardWidth: (94vw - 3vw) / 2;
+            width: $cardWidth;
+            height: $cardWidth;
+            padding: 2.5vw;
+            border-radius: 2vw;
+            font-size: clamp(12px, 1.5vw, 14px);
+            
+            .__bgColorContainer {
+                width: $containerWidth - 64vw;
+                height: $containerWidth - 64vw;
+            }
+        }
+    }
+}
+@media (max-width: 767px) {
+    $containerWidth: 100vw - 10vw;
+    .container { max-width: $containerWidth; }
+
+    main {
+        .row {gap: 7vw;}
+        .card__container {
+            $cardWidth: 90vw - 2.5vw;
+            width: $cardWidth;
+            height: $cardWidth;
+            padding: 5vw;
+            border-radius: 5vw;
+            font-size: clamp(12px, 1.5vw, 14px);
+            
+            .__bgColorContainer {
+                width: $containerWidth - 34vw;
+                height: $containerWidth - 34vw;
+            }
+        }
+    }
+}
 
 

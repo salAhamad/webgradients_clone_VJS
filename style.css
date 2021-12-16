@@ -13,9 +13,8 @@ body {
 
 .container {
   width: 100%;
-  max-width: 1360px;
-  padding: 0 20px;
-  margin: auto;
+  max-width: 75vw;
+  margin: 0 auto;
 }
 
 header {
@@ -75,27 +74,27 @@ main .row {
   display: flex;
   -ms-flex-wrap: wrap;
       flex-wrap: wrap;
-  gap: 1.5rem;
+  gap: 1.5vw;
 }
 
 main .card__container {
   position: relative;
-  width: calc((100% - 3rem) / 3);
-  height: clamp(350px, 26vw, 420px);
+  width: calc((75vw - 3vw) / 3);
+  height: calc((75vw - 3vw) / 3);
   background-color: #ffffff;
   -webkit-box-shadow: 0 6px 15px rgba(36, 37, 38, 0.08);
           box-shadow: 0 6px 15px rgba(36, 37, 38, 0.08);
-  border-radius: 16px;
+  border-radius: 1vw;
   -webkit-transition: -webkit-box-shadow 0.25s ease, -webkit-transform 0.25s ease;
   transition: -webkit-box-shadow 0.25s ease, -webkit-transform 0.25s ease;
   transition: box-shadow 0.25s ease, transform 0.25s ease;
   transition: box-shadow 0.25s ease, transform 0.25s ease, -webkit-box-shadow 0.25s ease, -webkit-transform 0.25s ease;
-  padding: 2rem;
+  padding: 1.5vw;
   -webkit-box-orient: vertical;
   -webkit-box-direction: normal;
       -ms-flex-direction: column;
           flex-direction: column;
-  cursor: pointer;
+  font-size: clamp(12px, 1.5vw, 16px);
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -150,10 +149,8 @@ main .card__container .__header .__downloadButton:hover {
 
 main .card__container .__bgColorContainer {
   position: relative;
-  width: 250px;
-  height: 250px;
-  width: clamp(150px, 15.5vw, 250px);
-  height: clamp(150px, 15.5vw, 250px);
+  width: 15vw;
+  height: 15vw;
   border-radius: 420px;
   background-color: #eee;
   z-index: 0;
@@ -346,5 +343,61 @@ main .checkBox.opened {
   }
   100% {
     border-radius: 0;
+  }
+}
+
+@media (min-width: 1001px) and (max-width: 1399px) {
+  .container {
+    max-width: 85vw;
+  }
+  main .card__container {
+    width: calc((85vw - 3vw) / 3);
+    height: calc((85vw - 3vw) / 3);
+    border-radius: 2vw;
+    font-size: clamp(12px, 1.5vw, 14px);
+  }
+  main .card__container .__bgColorContainer {
+    width: 17vw;
+    height: 17vw;
+  }
+}
+
+@media (min-width: 768px) and (max-width: 1000px) {
+  .container {
+    max-width: 94vw;
+  }
+  main .row {
+    gap: 3vw;
+  }
+  main .card__container {
+    width: 45.5vw;
+    height: 45.5vw;
+    padding: 2.5vw;
+    border-radius: 2vw;
+    font-size: clamp(12px, 1.5vw, 14px);
+  }
+  main .card__container .__bgColorContainer {
+    width: 30vw;
+    height: 30vw;
+  }
+}
+
+@media (max-width: 767px) {
+  .container {
+    max-width: 90vw;
+  }
+  main .row {
+    gap: 7vw;
+  }
+  main .card__container {
+    width: 87.5vw;
+    height: 87.5vw;
+    padding: 5vw;
+    border-radius: 5vw;
+    font-size: clamp(12px, 1.5vw, 14px);
+  }
+  main .card__container .__bgColorContainer {
+    width: 56vw;
+    height: 56vw;
   }
 }

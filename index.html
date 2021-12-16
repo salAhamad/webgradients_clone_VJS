@@ -35,23 +35,7 @@
     </header>
     <main>
         <div class="container">
-            <div class="row">
-                <!-- <div class="card__ card__container">
-                    <div class="__header">
-                        <span class="__name">Name</span>
-                        <div class="__downloadButton"></div>
-                    </div>
-                    <div class="__bgColorContainer" title="View Full Screen"></div>
-                    <div class="__footer">
-                        <div class="__colors">
-                            <span class="__color">White</span>
-                            <span class="__color__symbol"> → </span>
-                            <span class="__color">Red</span>
-                        </div>
-                        <button class="__copyButton">Copy CSS</button>
-                    </div>
-                </div> -->
-            </div>
+            <div class="row"></div>
         </div>
         <div class="checkBox fullScreenBox" style="background-image: url()"></div>
     </main>
@@ -128,28 +112,28 @@
                 setTimeout(() => this.classList.remove('valueAdded'), 800)
             })
 
-            // const allCopiableButtons = document.querySelectorAll('.__copyButton');           
-            // allCopiableButtons.forEach(button => {
-            //     button.addEventListener('click', function(e) {
-            //         copyClipboard(e);
-            //         let allAlerts = document.querySelectorAll('.copiedMessageAlert');
-            //         allAlerts.forEach(elem => elem.remove())
+            const allCopiableButtons = document.querySelectorAll('.__copyButton');           
+            allCopiableButtons.forEach(button => {
+                button.addEventListener('click', function(e) {
+                    copyClipboard(e);
+                    let allAlerts = document.querySelectorAll('.copiedMessageAlert');
+                    allAlerts.forEach(elem => elem.remove())
 
-            //         const alertData = `
-            //             <div class="copiedMessageAlert">
-            //                 <div class="gradientsDoneMessage">
-            //                     <span class="_emoji">✌</span>
-            //                     <span class="_word">Coppied successfully!</span>
-            //                 </div>   
-            //             </div>
-            //         `;
-            //         const thisMainParent = this.closest('.card__container');
-            //         thisMainParent.insertAdjacentHTML('beforeEnd', alertData);
-            //         thisMainParent.classList.remove('coppeid');
-            //         setTimeout(() => thisMainParent.classList.add('coppeid'), 300);
-            //         setTimeout(() => thisMainParent.classList.remove('coppeid'), 2500);
-            //     });
-            // });
+                    const alertData = `
+                        <div class="copiedMessageAlert">
+                            <div class="gradientsDoneMessage">
+                                <span class="_emoji">✌</span>
+                                <span class="_word">Coppied successfully!</span>
+                            </div>   
+                        </div>
+                    `;
+                    const thisMainParent = this.closest('.card__container');
+                    thisMainParent.insertAdjacentHTML('beforeEnd', alertData);
+                    thisMainParent.classList.remove('coppeid');
+                    setTimeout(() => thisMainParent.classList.add('coppeid'), 300);
+                    setTimeout(() => thisMainParent.classList.remove('coppeid'), 2500);
+                });
+            });
         });
 
         // Copy gradient color by clicking a button
