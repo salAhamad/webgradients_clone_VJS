@@ -228,7 +228,6 @@ main .card__container .copiedMessageAlert {
   right: 0;
   overflow: hidden;
   border-radius: 16px;
-  pointer-events: none;
 }
 
 main .card__container .copiedMessageAlert:after {
