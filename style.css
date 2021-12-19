@@ -228,6 +228,8 @@ main .card__container .copiedMessageAlert {
   right: 0;
   overflow: hidden;
   border-radius: 16px;
+  pointer-events: none;
+  z-index: 0;
 }
 
 main .card__container .copiedMessageAlert:after {
@@ -286,9 +288,14 @@ main .card__container .copiedMessageAlert .gradientsDoneMessage ._word {
   font-size: 16px;
 }
 
+main .card__container.coppeid .copiedMessageAlert {
+  pointer-events: auto;
+  z-index: 1;
+}
+
 main .card__container.coppeid .copiedMessageAlert::after {
-  -webkit-transform: scale(2.5);
-          transform: scale(2.5);
+  -webkit-transform: scale(3);
+          transform: scale(3);
 }
 
 main .card__container.coppeid .copiedMessageAlert .gradientsDoneMessage {
@@ -385,14 +392,17 @@ main .checkBox.opened {
   .container {
     max-width: 90vw;
   }
+  header .subHeader .logo {
+    width: 225px;
+  }
   main .row {
     gap: 7vw;
   }
   main .card__container {
-    width: 87.5vw;
-    height: 87.5vw;
+    width: 90vw;
+    height: 90vw;
     padding: 5vw;
-    border-radius: 5vw;
+    border-radius: 3.5vw;
     font-size: clamp(12px, 1.5vw, 14px);
   }
   main .card__container .__bgColorContainer {

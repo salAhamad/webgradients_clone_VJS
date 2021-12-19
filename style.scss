@@ -160,6 +160,8 @@ main {
             right: 0;
             overflow: hidden;
             border-radius: 16px;
+            pointer-events: none;
+            z-index: 0;
             &:after {
                 content: '';
                 position: absolute;
@@ -195,7 +197,9 @@ main {
 
         &.coppeid {
             .copiedMessageAlert {
-                &::after {transform: scale(2.5);}
+                pointer-events: auto;
+                z-index: 1;
+                &::after {transform: scale(3);}
                 .gradientsDoneMessage {opacity: 1; visibility: visible;}
             }
         }
@@ -271,15 +275,15 @@ main {
 @media (max-width: 767px) {
     $containerWidth: 100vw - 10vw;
     .container { max-width: $containerWidth; }
-
+    header .subHeader .logo {width: 225px;}
     main {
         .row {gap: 7vw;}
         .card__container {
-            $cardWidth: 90vw - 2.5vw;
+            $cardWidth: 90vw;
             width: $cardWidth;
             height: $cardWidth;
             padding: 5vw;
-            border-radius: 5vw;
+            border-radius: 3.5vw;
             font-size: clamp(12px, 1.5vw, 14px);
             
             .__bgColorContainer {
