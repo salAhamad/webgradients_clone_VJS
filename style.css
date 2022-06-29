@@ -66,6 +66,7 @@ main {
   padding: 8vh 0;
   background-color: #f6f6f6;
   overflow: hidden;
+  position: relative;
 }
 
 main .row {
@@ -129,7 +130,7 @@ main .card__container .__header .__downloadButton {
   width: 21px;
   height: 21px;
   border: 1px solid #000000;
-  background-image: url(download.svg);
+  background-image: url(https://d4uuk.csb.app/download.svg);
   background-position: center center;
   background-repeat: no-repeat;
   cursor: pointer;
@@ -350,6 +351,115 @@ main .checkBox.opened {
   100% {
     border-radius: 0;
   }
+}
+
+.searchBarContainer {
+  position: -webkit-sticky;
+  position: sticky;
+  top: 1vh;
+  z-index: 10;
+  padding: 0 0 1rem 0;
+  width: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  z-index: 10;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.searchBarContainer .container {
+  position: relative;
+}
+
+.searchBarContainer i.fa-search {
+  width: 50px;
+  height: 50px;
+  position: absolute;
+  left: 0;
+  top: 0;
+  font-size: 1.1rem;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+.searchBarContainer input {
+  width: 100%;
+  height: 50px;
+  border: 0;
+  padding: 1rem 1rem 1rem 55px;
+  font-size: 1rem;
+  border-radius: .35rem;
+  -webkit-box-shadow: inset 0 0 0 1px #e6e6e6;
+          box-shadow: inset 0 0 0 1px #e6e6e6;
+}
+
+.searchBarContainer input:focus {
+  outline: none;
+  -webkit-box-shadow: inset 0 0 0 2px #2673e7;
+          box-shadow: inset 0 0 0 2px #2673e7;
+}
+
+.searchBarContainer input:focus ~ i {
+  color: #2673e7;
+}
+
+.searchBarContainer .claerInput {
+  position: absolute;
+  right: .55rem;
+  top: 0.55rem;
+  padding: .6rem .75rem;
+  background-color: #d30b0b;
+  color: #ffffff;
+  display: -webkit-inline-box;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  cursor: pointer;
+  border-radius: .25rem;
+  -webkit-transition: all 0.3s ease;
+  transition: all 0.3s ease;
+}
+
+.searchBarContainer .claerInput:hover {
+  -webkit-box-shadow: inset 0 0 0 1px #d30b0b;
+          box-shadow: inset 0 0 0 1px #d30b0b;
+  color: #d30b0b;
+  background-color: #ffffff;
+}
+
+.searchBarContainer .claerInput i {
+  margin-right: .75rem;
+  font-size: 115%;
+  line-height: 0;
+}
+
+.emptyState {
+  width: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  padding: 1rem;
+  font-size: clamp(1rem, calc(5vw + .5rem), 1.5rem);
 }
 
 @media (min-width: 1001px) and (max-width: 1399px) {

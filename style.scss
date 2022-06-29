@@ -4,11 +4,14 @@
     padding: 0;
 }
 
+$primary: #2673e7;
 $white: #ffffff;
 $black: #000000;
 $bgBaseColor: #f6f6f6;
 $boxHeight: 420px;
 $containerWidth: 100vw - 25vw;
+$red: rgb(211, 11, 11);
+
 body {
     font-family: 'Muli', 'Futura', Helvetica, Arial, sans-serif;
     font-size: .8125em;
@@ -56,6 +59,7 @@ main {
     padding: 8vh 0;
     background-color: $bgBaseColor;
     overflow: hidden;
+    position: relative;
 
     .row {
         display: flex;
@@ -89,7 +93,7 @@ main {
                 width: 21px;
                 height: 21px;
                 border: 1px solid $black;
-                background-image: url(download.svg);
+                background-image: url(https://d4uuk.csb.app/download.svg);
                 background-position: center center;
                 background-repeat: no-repeat;
                 cursor: pointer;
@@ -231,6 +235,74 @@ main {
             100% {border-radius: 0;}
         }
     }
+}
+.searchBarContainer {
+    position: sticky;
+    top: 1vh;
+    z-index: 10;
+    padding: 0 0 1rem 0;
+    width: 100%;
+    display: flex;
+    z-index: 10;
+    justify-content: center;
+    align-items: center;
+    .container {
+        position: relative;
+    }
+    i.fa-search {
+        width: 50px;
+        height: 50px;
+        position: absolute;
+        left: 0;
+        top: 0;
+        font-size: 1.1rem;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+    input {
+        width: 100%;
+        height: 50px;
+        border: 0;
+        padding: 1rem 1rem 1rem 55px;
+        font-size: 1rem;
+        border-radius: .35rem;
+        box-shadow: inset 0 0 0 1px #e6e6e6;
+        &:focus {
+            outline: none;
+            box-shadow: inset 0 0 0 2px $primary;
+            ~ i {
+                color: $primary;
+            }
+        }
+    }
+    .claerInput {
+        position: absolute;
+        right: .55rem;
+        top: 0.55rem;
+        padding: .6rem .75rem;
+        background-color: $red;
+        color: $white;
+        display: inline-flex;
+        align-items: center;
+        cursor: pointer;
+        border-radius: .25rem;
+        transition: all 0.3s ease;
+        &:hover {
+            box-shadow: inset 0 0 0 1px $red;
+            color: $red;
+            background-color: $white;
+        }
+        i {margin-right: .75rem; font-size: 115%; line-height: 0;}
+    }
+}
+.emptyState {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 1rem;
+    font-size: clamp(1rem, calc(5vw + .5rem), 1.5rem);
 }
 
 @media (min-width: 1001px) and (max-width: 1399px) {
